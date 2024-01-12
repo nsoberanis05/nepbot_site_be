@@ -101,7 +101,7 @@ router.get("/discord/callback", async (req, res) => {
       expiresIn: "1d",
     });
 
-    res.cookie("token", token, { sameSite: "lax", secure: true });
+    res.cookie("token", token, { sameSite: "none", secure: true });
     res.redirect(process.env.CLIENT_REDIRECT_URL);
   } catch (error) {
     console.log(error.message);
