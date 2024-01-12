@@ -6,9 +6,9 @@ async function authenticate(req, res, next) {
   const token = req.cookies.token;
   try {
     // verify token
+    console.log(token);
     const { sub } = await verify(token, process.env.JWT_SECRET);
 
-    console.log(token);
     console.log(sub);
 
     if (!sub) {
