@@ -56,7 +56,6 @@ router.get("/discord/callback", async (req, res) => {
       grant_type: "authorization_code",
       code,
       redirect_uri: process.env.DISCORD_REDIRECT_URI,
-      scope: "identify",
     });
 
     const headers = {
