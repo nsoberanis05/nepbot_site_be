@@ -3,13 +3,11 @@ import usersDAO from "../DAO/usersDAO.js";
 const { verify } = pkg;
 
 async function authenticate(req, res, next) {
+  console.log(req);
   const token = req.cookies.token;
   try {
     // verify token
-    console.log(token);
     const { sub } = await verify(token, process.env.JWT_SECRET);
-
-    console.log(sub);
 
     if (!sub) {
       req.user = null;
