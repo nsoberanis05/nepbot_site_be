@@ -37,7 +37,7 @@ router.get("/discord/logout", async (req, res) => {
     );
 
     req.user = null;
-    res.clearCookie("token", { domain: process.env.COOKIE_CLEAR_DOMAIN });
+    res.clearCookie("token", { sameSite: "none", secure: true });
     res.end();
   } catch (error) {
     console.log(error.message);
@@ -61,14 +61,11 @@ router.get("/discord/callback", async (req, res) => {
       "Accept-Encoding": "application/x-www-form-urlencoded",
     };
 
-    console.log("Passed query check :D");
-
     const response = await Axios.post(
       "https://discord.com/api/oauth2/token",
       params,
       { headers }
     );
-    console.log("Passed post call :D", response.data);
 
     const userResponse = await Axios.get("https://discord.com/api/users/@me", {
       headers: {
@@ -102,8 +99,6 @@ router.get("/discord/callback", async (req, res) => {
     const token = sign({ sub: id }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
-
-    console.log("Passed token creation :D", token);
 
     res.cookie("token", token, { sameSite: "none", secure: true });
     res.redirect(process.env.CLIENT_REDIRECT_URL);
