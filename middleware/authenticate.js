@@ -7,6 +7,10 @@ async function authenticate(req, res, next) {
   try {
     // verify token
     const { sub } = await verify(token, process.env.JWT_SECRET);
+
+    console.log(token);
+    console.log(sub);
+
     if (!sub) {
       req.user = null;
       return next();
@@ -41,6 +45,7 @@ async function authenticate(req, res, next) {
       };
     }
   } catch (error) {
+    console.log(error.message);
     req.user = null;
   }
 

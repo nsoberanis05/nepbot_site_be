@@ -50,7 +50,6 @@ router.get("/discord/callback", async (req, res) => {
   try {
     if (!req.query.code) return console.log("No Code Provided");
     const { code } = req.query;
-    console.log(code);
     const params = new URLSearchParams({
       client_id: process.env.DISCORD_CLIENT_ID,
       client_secret: process.env.DISCORD_SECRET,
