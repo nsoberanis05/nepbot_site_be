@@ -37,7 +37,7 @@ router.get("/discord/logout", async (req, res) => {
     );
 
     req.user = null;
-    res.clearCookie("token");
+    res.clearCookie("token", { domain: process.env.COOKIE_CLEAR_DOMAIN });
     res.end();
   } catch (error) {
     console.log(error.message);
