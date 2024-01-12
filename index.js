@@ -23,4 +23,6 @@ MongoClient.connect(process.env.MONGODB_URI, {
     app.listen(port, () => {
       console.log(`listening on port ${port}`);
     });
+    app.set("trust proxy", 1);
+    app.get("/ip", (request, response) => response.send(request.ip));
   });
