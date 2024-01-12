@@ -36,13 +36,11 @@ router.get("/discord/logout", async (req, res) => {
       { headers }
     );
 
-    console.log(response);
-
     req.user = null;
     res.clearCookie("token");
     res.end();
   } catch (error) {
-    console.log(error);
+    console.log(error.message);
   }
 });
 
