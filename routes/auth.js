@@ -74,7 +74,6 @@ router.get("/discord/callback", async (req, res) => {
       },
     });
 
-    console.log("Passed user call :D", userResponse.data);
     /* PLEASE NOTE ANY REFERENCE TO ID IN THIS FUNCTION IS IN REGARDS TO DISCORD ID */
     const { id, username, avatar, discriminator } = userResponse.data;
 
