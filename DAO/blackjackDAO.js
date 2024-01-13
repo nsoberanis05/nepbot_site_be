@@ -143,7 +143,7 @@ export default class blackjackDAO {
       });
     }
 
-    const { userTotal, userCards, casinoCards } = payload;
+    const { casinoCards } = payload;
 
     const tempCount = await this.countTotal([casinoCards[0]]);
 
@@ -151,11 +151,9 @@ export default class blackjackDAO {
     await usersDAO.findUserByIdAndUpdateJades(userId, bet * -1);
 
     return {
-      userCards,
-      userTotal,
+      ...payload,
       casinoCards: [casinoCards[0]],
       casinoTotal: tempCount,
-      bet,
     };
   }
 
