@@ -1,6 +1,8 @@
 import express, { response } from "express";
 import pkg from "jsonwebtoken";
 import slotsController from "../api/slots.controller.js";
+import rateLimit from "express-rate-limit";
+
 const { sign, verify } = pkg;
 
 const router = express.Router();

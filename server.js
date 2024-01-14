@@ -3,6 +3,7 @@ import userRoutes from "./routes/user.js";
 import authRoutes from "./routes/auth.js";
 import blackjackRoutes from "./routes/blackjack.js";
 import coinflipRoutes from "./routes/coinflip.js";
+import slotsRoutes from "./routes/slots.js";
 
 import mongodb from "mongodb";
 import dotenv from "dotenv";
@@ -39,9 +40,10 @@ app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
-app.use("/api/user", userRoutes);
-app.use("/auth", authRoutes);
-app.use("/blackjack", blackjackRoutes);
-app.use("/coinflip", coinflipRoutes);
+app.use("/api/user", authorize, userRoutes);
+app.use("/auth", authorize, authRoutes);
+app.use("/blackjack", authorize, blackjackRoutes);
+app.use("/coinflip", authorize, coinflipRoutes);
+app.use("/slots", authorize, slotsRoutes);
 
 export default app;
