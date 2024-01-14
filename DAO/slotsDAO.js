@@ -83,27 +83,27 @@ export default class slotsDAO {
     let result;
     // lose
     if (chance >= 1 && chance <= 50) {
-      result = await userLose();
+      result = await this.userLose();
     }
     // win back equal amount
     else if (chance >= 51 && chance <= 70) {
-      result = await userWin(userId, bet, 1);
+      result = await this.userWin(userId, bet, 1);
     }
     // win 2x amount
     else if (chance >= 71 && chance <= 90) {
-      result = await userWin(userId, bet, 2);
+      result = await this.userWin(userId, bet, 2);
     }
     // win 3x amount
     else if (chance >= 91 && chance <= 96) {
-      result = await userWin(userId, bet, 3);
+      result = await this.userWin(userId, bet, 3);
     }
     // win 4x amount
     else if (chance >= 97 && chance <= 99) {
-      result = await userWin(userId, bet, 4);
+      result = await this.userWin(userId, bet, 4);
     }
     // win 10x amount
     else if (chance === 100) {
-      result = await userWin(userId, bet, 10);
+      result = await this.userWin(userId, bet, 10);
     }
     // something went wrong
     else {
