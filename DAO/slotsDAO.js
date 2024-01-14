@@ -37,7 +37,7 @@ export default class slotsDAO {
   }
 
   static async userLose() {
-    const randomIndex = generateRandomNumbers(0, totalIcons - 1, 3);
+    const randomIndex = this.generateRandomNumbers(0, totalIcons - 1, 3);
     if (Math.random() > 0.6) {
       randomIndex[1] = randomIndex[0];
     }
