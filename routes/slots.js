@@ -12,6 +12,6 @@ const limiter = rateLimit({
   message: "Too many requests, please try again later",
 });
 
-router.get("/spin", limiter, slotsController.getSpin);
+router.post("/spin", limiter, slotsController.getSpin);
 
 export default router;
