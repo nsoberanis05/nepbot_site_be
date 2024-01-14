@@ -41,7 +41,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use("/api/user", authorize, userRoutes);
-app.use("/auth", authorize, authRoutes);
+app.use("/auth", authRoutes);
 app.use("/blackjack", authorize, blackjackRoutes);
 app.use("/coinflip", authorize, coinflipRoutes);
 app.use("/slots", authorize, slotsRoutes);
