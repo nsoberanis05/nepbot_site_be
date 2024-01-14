@@ -105,10 +105,8 @@ export default class slotsDAO {
     else if (chance === 100) {
       result = await this.userWin(userId, bet, 10);
     }
-    // something went wrong
-    else {
-      payload.result = result;
-      return payload;
-    }
+
+    payload.result = result;
+    return payload;
   }
 }
