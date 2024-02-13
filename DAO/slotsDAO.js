@@ -77,6 +77,9 @@ export default class slotsDAO {
   }
 
   static async spin(userId, bet) {
+    // Process bet
+    await usersDAO.findUserByIdAndUpdateJades(userId, bet * -1);
+
     // Winnin % logic
     const chance = Math.floor((Math.random() * 100) + 1); // prettier-ignore
     const payload = {};
