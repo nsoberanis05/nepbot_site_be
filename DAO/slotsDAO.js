@@ -73,7 +73,7 @@ export default class slotsDAO {
         break;
     }
 
-    return { message: "You won", icons: [icon, icon, icon] };
+    return { message: "You won", icons: [icon, icon, icon], multiplier };
   }
 
   static async spin(userId, bet) {
